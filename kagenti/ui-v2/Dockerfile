@@ -6,11 +6,11 @@ FROM node:25-alpine@sha256:5209bcaca9836eb3448b650396213dbe9d9a34d31840c2ae1f206
 
 WORKDIR /app
 
-# Copy package files and lockfile for reproducible builds
-COPY ui-v2/package.json ui-v2/package-lock.json ./
+# Copy package files
+COPY ui-v2/package.json ./
 
 # Install dependencies
-RUN npm ci --legacy-peer-deps
+RUN npm install --legacy-peer-deps
 
 # Copy source code
 COPY ui-v2/ .
